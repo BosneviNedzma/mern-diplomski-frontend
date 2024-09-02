@@ -10,6 +10,7 @@ import ImageSection from "./ImageSection";
 import LoadingButton from "@/components/LoadingButton";
 import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
+import { Store } from "@/types";
 
 const formSchema = z.object({
     storeName: z.string({

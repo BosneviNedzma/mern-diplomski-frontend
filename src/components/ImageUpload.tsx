@@ -1,7 +1,7 @@
 // src/components/ImageUpload.tsx
 import React, { useState, ChangeEvent } from 'react';
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { storage } from '../firebaseConfig'; // Adjust the import path if needed
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { storage } from '../firebase.ts'; // Adjust the import path if needed
 
 const ImageUpload: React.FC = () => {
   const [image, setImage] = useState<File | null>(null);
