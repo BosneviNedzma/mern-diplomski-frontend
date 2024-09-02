@@ -1,0 +1,21 @@
+export const offerList = [
+    "Džemovi",
+    "Namazi",
+    "Voće",
+    "Povrće",
+    "Čajevi",
+    "Sokovi",
+    "Autohtono",
+    "Slatko",
+    "Slano",
+    "Mliječni proizvodi",
+    "Mesni proizvodi",
+    "Pčelinji proizvodi",
+    "Ulja",
+    "Prirodni lijekovi",
+    "Hercegovačko",
+    "Krajiško",
+    "Začini",
+    "Napici",
+    "Gotova jela"
+]

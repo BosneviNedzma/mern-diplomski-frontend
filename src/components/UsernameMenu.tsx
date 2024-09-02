@@ -6,8 +6,8 @@ import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
 
 const UsernameMenu = () => {
-    const {user, logout} = useAuth0();
-    return(
+    const { user, logout } = useAuth0();
+    return (
         <DropdownMenu>
             <DropdownMenuTrigger className="flex items-center px-3 font-bold hover:text-green-500 gap-2">
                 <CircleUserRound className="text-green-500" />
@@ -15,9 +15,14 @@ const UsernameMenu = () => {
             </DropdownMenuTrigger>
             <DropdownMenuContent>
                 <DropdownMenuItem>
-                <Link to="/user-profile" className="font-bold hover:text-green-500">
-                Profil korisnika
-                </Link>
+                    <Link to="/manage-store" className="font-bold hover:text-green-500">
+                        Upravljaj prodavnicom
+                    </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                    <Link to="/user-profile" className="font-bold hover:text-green-500">
+                        Profil korisnika
+                    </Link>
                 </DropdownMenuItem>
                 <Separator />
                 <DropdownMenuItem>
