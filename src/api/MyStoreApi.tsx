@@ -11,6 +11,9 @@ export const useGetMyStore = () => {
     const getMyStoreRequest = async (): Promise<Store> => {
         const accessToken = await getAccessTokenSilently();
 
+        console.log('API Base URL:', API_BASE_URL);
+        console.log('Access Token:', accessToken);
+
         const response = await fetch(`${API_BASE_URL}/api/my/store`, {
             method: "GET",
             headers: {
