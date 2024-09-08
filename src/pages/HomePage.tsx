@@ -8,20 +8,21 @@ const HomePage = () => {
 
     const handleSearchSubmit = (searchFormValues: SearchForm) => {
         navigate({
-            pathname:`/search/${searchFormValues.searchQuery}`,
+            pathname: `/search/${searchFormValues.searchQuery}`,
         });
-    }
-    return(
+    };
+
+    return (
         <div className="flex flex-col gap-12">
             <div className="md:px-32 bg-white rounded-lg shadow-md py-8 flex flex-col gap-5 text-center -mt-16">
                 <h1 className="text-5xl font-bold tracking-tight text-green-600">
                     Organska dobrota na dlanu
                 </h1>
                 <span className="text-xl">Klik te dijeli od sreće</span>
-                <SearchBar placeHolder="Pretraži po gradu ili općini" onSubmit={handleSearchSubmit} />
+                <SearchBar placeHolder="Pretraži po gradu ili općini" onSubmit={handleSearchSubmit} searchQuery={""} />
             </div>
             <div className="grid md:grid-cols-2 gap-5">
-                <img src={landingImage}  />
+                <img src={landingImage} />
                 <div className="flex flex-col items-center justify-center gap-4 text-center">
                     <span className="font-bold text-3xl tracking-tighter">Sa sela do vašeg stola!</span>
                     <span>bosanskohercegovačka proizvodnja</span>
