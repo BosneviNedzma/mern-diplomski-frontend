@@ -20,9 +20,18 @@ export type Store = {
     city: string;
     country: string;
     deliveryPrice: number;
-    estimatedDeliveryPrice: number;
+    estimatedDeliveryTime: number;
     offers: string[];
     menuItems: MenuItem[];
     imageUrl: string;
     lastUpdated: string;
-}
+};
+
+export type StoreSearchResponse = {
+    data: Store[];
+    pagination: {
+        total: number;
+        page: number;
+        pages: number;
+    };
+};
