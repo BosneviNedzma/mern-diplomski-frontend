@@ -14,7 +14,6 @@ const SearchResultInfo = ({ total, city, }: Props) => {
                 <Link to="/" className="ml-1 text-sm font-semibold underline cursor-pointer text-blue-500">
                     Promijeni lokaciju</Link>
             </span>
-            insert sort dropdown here
         </div>
     )
 }
