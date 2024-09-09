@@ -1,8 +1,28 @@
 import { SearchState } from "@/pages/SearchPage";
-import { StoreSearchResponse } from "@/types";
+import { Store, StoreSearchResponse } from "@/types";
 import { useQuery } from "react-query";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
+export const useGetStore = (storeId?: string) => {
+    const getStoreByIdRequest = async (): Promise<Store> => {
+        const response = await fetch(`${API_BASE_URL}/api/store/${storeId}`);
+
+        if (!response.ok) {
+            throw new Error("Greška pri dohvaćanju prodavnice.");
+        }
+
+        return response.json();
+    }
+
+    const { data: store, isLoading } = useQuery("fetchStore", getStoreByIdRequest, {
+        enabled: !!storeId,
+    });
+
+    return {
+        store, isLoading
+    }
+}
 
 export const useSearchStores = (searchState: SearchState, city?: string) => {
     const createSearchRequest = async (): Promise<StoreSearchResponse> => {

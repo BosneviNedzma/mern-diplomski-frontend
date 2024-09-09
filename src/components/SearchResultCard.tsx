@@ -40,7 +40,7 @@ const SearchResultCard = ({ store }: Props) => {
             </div>
             <div className="flex items-center gap-1">
               <Banknote />
-              Dostavlja se po cijeni KM{(store.deliveryPrice / 100).toFixed(2)}
+              Dostavlja se po cijeni KM {(store.deliveryPrice / 100).toFixed(2)}
             </div>
           </div>
         </div>
