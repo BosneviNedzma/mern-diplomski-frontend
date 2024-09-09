@@ -41,6 +41,14 @@ const DetailPage = () => {
             }
             return updatedCartItems;
         })
+    };
+
+    const removeFromCart = (cartItem: CartItem) => {
+        setCartItems((prevCartItems) => {
+            const updatedCartItems = prevCartItems.filter((item) => cartItem._id !== item._id);
+
+            return updatedCartItems;
+        })
     }
 
     if (isLoading || !store) {
@@ -48,21 +56,23 @@ const DetailPage = () => {
     }
 
     return (
-        <div className="flex flex-col gap-10 ">
+        <div className="flex flex-col gap-10 overflow-hidden">
             <AspectRatio ratio={16 / 5}>
-                <img src={store.imageUrl} className="rounded-md object-cover h-full w-full" />
+                <img src={store.imageUrl} className="rounded-md object-cover h-full w-full max-w-full" />
             </AspectRatio>
-            <div className="grid md:grid-cols-[4fr_2fr] gap-5 md:px-32">
-                <div className="flex flex-col gap-4 ">
+            <div className="grid md:grid-cols-[4fr_2fr] gap-5 md:px-32 overflow-hidden">
+                <div className="flex flex-col gap-4 overflow-hidden ">
                     <StoreInfo store={store} />
                     <span className="text-2xl font-bold tracking-tight">Ponuda</span>
                     {store.menuItems.map((menuItem) => (
-                        <MenuItem menuItem={menuItem} addToCart={() => addToCart(menuItem)} />
+                        <MenuItem
+                            key={menuItem._id}
+                            menuItem={menuItem} addToCart={() => addToCart(menuItem)} />
                     ))}
                 </div>
-                <div>
+                <div className="overflow-hidden">
                     <Card>
-                        <OrderSummary store={store} cartItems={cartItems} />
+                        <OrderSummary store={store} cartItems={cartItems} removeFromCart={removeFromCart} />
                     </Card>
                 </div>
             </div>

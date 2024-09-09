@@ -8,7 +8,7 @@ type Props = {
 
 const StoreInfo = ({ store }: Props) => {
     return (
-        <Card className="border-sla">
+        <Card className="border-sla max-w-full overflow-hidden">
             <CardHeader>
                 <CardTitle className="text-3xl font-bold tracking-tight">
                     {store.storeName}
@@ -17,12 +17,12 @@ const StoreInfo = ({ store }: Props) => {
                     {store.city}, {store.country}
                 </CardDescription>
             </CardHeader>
-            <CardContent className="flex">
+            <CardContent className="flex flex-wrap gap-2">
                 {store.offers.map((item, index) => (
-                    <span className="flex">
+                    <span className="flex items-center" key={index}>
                         <span>{item}</span>
                         {
-                            index < store.offers.length - 1 && <Dot />
+                            index < store.offers.length - 1 && <Dot className="mx-1" />
                         }
                     </span>
                 ))}
