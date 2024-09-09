@@ -1,9 +1,10 @@
 import { useGetStore } from "@/api/StoreApi";
+import CheckoutButton from "@/components/CheckoutButton";
 import MenuItem from "@/components/MenuItem";
 import OrderSummary from "@/components/OrderSummary";
 import StoreInfo from "@/components/StoreInfo";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { Card } from "@/components/ui/card";
+import { Card, CardFooter } from "@/components/ui/card";
 import { MenuItem as MenuItemType } from "@/types";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
@@ -19,7 +20,10 @@ const DetailPage = () => {
     const { storeId } = useParams();
     const { store, isLoading } = useGetStore(storeId);
 
-    const [cartItems, setCartItems] = useState<CartItem[]>([]);
+    const [cartItems, setCartItems] = useState<CartItem[]>(() => {
+        const storedCartItems = sessionStorage.getItem(`cartItems-${storeId}`);
+        return storedCartItems ? JSON.parse(storedCartItems) : [];
+    });
     const addToCart = (menuItem: MenuItemType) => {
         setCartItems((prevCartItems) => {
             const existingCartItem = prevCartItems.find((cartItem) => cartItem._id === menuItem._id);
@@ -39,6 +43,9 @@ const DetailPage = () => {
                     }
                 ];
             }
+
+            sessionStorage.setItem(`cartItems-${storeId}`, JSON.stringify(updatedCartItems));
+
             return updatedCartItems;
         })
     };
@@ -46,6 +53,8 @@ const DetailPage = () => {
     const removeFromCart = (cartItem: CartItem) => {
         setCartItems((prevCartItems) => {
             const updatedCartItems = prevCartItems.filter((item) => cartItem._id !== item._id);
+
+            sessionStorage.setItem(`cartItems-${storeId}`, JSON.stringify(updatedCartItems));
 
             return updatedCartItems;
         })
@@ -73,6 +82,9 @@ const DetailPage = () => {
                 <div className="overflow-hidden">
                     <Card>
                         <OrderSummary store={store} cartItems={cartItems} removeFromCart={removeFromCart} />
+                        <CardFooter>
+                            <CheckoutButton />
+                        </CardFooter>
                     </Card>
                 </div>
             </div>
