@@ -22,9 +22,11 @@ type Props = {
     currentUser: User;
     onSave: (userProfileData: UserFormData) => void;
     isLoading: boolean;
+    title?: string;
+    buttonText?: string;
 }
 
-const UserProfileForm = ({ onSave, isLoading, currentUser }: Props) => {
+const UserProfileForm = ({ onSave, isLoading, currentUser, title = "Korisnički profil", buttonText = "Spremi" }: Props) => {
     const form = useForm<UserFormData>({
         resolver: zodResolver(formSchema),
         defaultValues: currentUser,
@@ -38,10 +40,10 @@ const UserProfileForm = ({ onSave, isLoading, currentUser }: Props) => {
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSave)} className="space-y-4 bg-gray-50 rounded-lg md:p-10">
                 <div className="">
-                    <h2 className="text-2xl font-bold">Forma korisničkog naloga</h2>
+                    <h2 className="text-2xl font-bold">{title}</h2>
                     <FormDescription>Pogledaj i promijeni podatke ovdje</FormDescription>
                 </div>
-                <FormField control={form.control} name="email" render={({field}) => (
+                <FormField control={form.control} name="email" render={({ field }) => (
                     <FormItem>
                         <FormLabel>Email: </FormLabel>
                         <FormControl>
@@ -51,7 +53,7 @@ const UserProfileForm = ({ onSave, isLoading, currentUser }: Props) => {
                 )} />
 
 
-                <FormField control={form.control} name="name" render={({field}) => (
+                <FormField control={form.control} name="name" render={({ field }) => (
                     <FormItem>
                         <FormLabel>Ime: </FormLabel>
                         <FormControl>
@@ -62,42 +64,42 @@ const UserProfileForm = ({ onSave, isLoading, currentUser }: Props) => {
                 )} />
 
                 <div className="flex flex-col md:flex-row gap-4">
-                <FormField control={form.control} name="addressLine1" render={({field}) => (
-                    <FormItem className="flex-1">
-                        <FormLabel>Adresa: </FormLabel>
-                        <FormControl>
-                            <Input {...field} className="bg-white" />
-                        </FormControl>
-                        <FormMessage />
-                    </FormItem>
-                )} />
+                    <FormField control={form.control} name="addressLine1" render={({ field }) => (
+                        <FormItem className="flex-1">
+                            <FormLabel>Adresa: </FormLabel>
+                            <FormControl>
+                                <Input {...field} className="bg-white" />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )} />
 
 
-                <FormField control={form.control} name="city" render={({field}) => (
-                    <FormItem className="flex-1">
-                        <FormLabel>Grad: </FormLabel>
-                        <FormControl>
-                            <Input {...field} className="bg-white" />
-                        </FormControl>
-                        <FormMessage />
-                    </FormItem>
-                )} />
+                    <FormField control={form.control} name="city" render={({ field }) => (
+                        <FormItem className="flex-1">
+                            <FormLabel>Grad: </FormLabel>
+                            <FormControl>
+                                <Input {...field} className="bg-white" />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )} />
 
 
-                <FormField control={form.control} name="country" render={({field}) => (
-                    <FormItem className="flex-1">
-                        <FormLabel>Država: </FormLabel>
-                        <FormControl>
-                            <Input {...field} className="bg-white" />
-                        </FormControl>
-                        <FormMessage />
-                    </FormItem>
-                )} />
+                    <FormField control={form.control} name="country" render={({ field }) => (
+                        <FormItem className="flex-1">
+                            <FormLabel>Država: </FormLabel>
+                            <FormControl>
+                                <Input {...field} className="bg-white" />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )} />
                 </div>
 
                 {
                     isLoading ? (<LoadingButton />) : (
-                        <Button type="submit" className="bg-green-500">Ažuriraj</Button>
+                        <Button type="submit" className="bg-green-500">{buttonText}</Button>
                     )
                 }
 

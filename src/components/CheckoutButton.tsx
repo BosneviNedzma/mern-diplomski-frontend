@@ -6,19 +6,19 @@ import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
 import UserProfileForm, { UserFormData } from "@/forms/user-profile-form/UserProfileForm";
 import { useGetMyUser } from "@/api/MyUserApi";
 
-type Props = { 
+type Props = {
     onCheckout: (userFormData: UserFormData) => void;
     disabled: boolean;
 
 
 }
 
-const CheckoutButton = ({onCheckout, disabled}: Props) => {
+const CheckoutButton = ({ onCheckout, disabled }: Props) => {
     const { isAuthenticated, isLoading: isAuthLoading, loginWithRedirect } = useAuth0();
 
     const { pathname } = useLocation();
 
-    const {currentUser, isLoading: isGetUserLoading} = useGetMyUser();
+    const { currentUser, isLoading: isGetUserLoading } = useGetMyUser();
 
     const onLogin = async () => {
         await loginWithRedirect({
@@ -36,7 +36,7 @@ const CheckoutButton = ({onCheckout, disabled}: Props) => {
         return <LoadingButton />
     }
 
-    return(
+    return (
         <Dialog>
             <DialogTrigger asChild>
                 <Button disabled={disabled} className="bg-green-500 flex-1">
@@ -44,7 +44,8 @@ const CheckoutButton = ({onCheckout, disabled}: Props) => {
                 </Button>
             </DialogTrigger>
             <DialogContent className="max-w-[425px] md:min-w-[700px] bg-gray-50">
-                <UserProfileForm currentUser={currentUser} onSave={onCheckout} isLoading={isGetUserLoading} />
+                <UserProfileForm currentUser={currentUser} onSave={onCheckout} isLoading={isGetUserLoading}
+                    title="Potvrdi detalje isporuke" buttonText="Prijeđi na plaćanje" />
             </DialogContent>
         </Dialog>
     )
