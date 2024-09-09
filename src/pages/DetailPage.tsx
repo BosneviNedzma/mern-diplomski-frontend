@@ -5,6 +5,7 @@ import OrderSummary from "@/components/OrderSummary";
 import StoreInfo from "@/components/StoreInfo";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Card, CardFooter } from "@/components/ui/card";
+import { UserFormData } from "@/forms/user-profile-form/UserProfileForm";
 import { MenuItem as MenuItemType } from "@/types";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
@@ -60,6 +61,10 @@ const DetailPage = () => {
         })
     }
 
+    const onCheckout = (userFormData: UserFormData) => {
+        console.log("userFormData", userFormData);
+    }
+
     if (isLoading || !store) {
         return "Loading...";
     }
@@ -83,7 +88,7 @@ const DetailPage = () => {
                     <Card>
                         <OrderSummary store={store} cartItems={cartItems} removeFromCart={removeFromCart} />
                         <CardFooter>
-                            <CheckoutButton />
+                            <CheckoutButton disabled={cartItems.length === 0} onCheckout={onCheckout} />
                         </CardFooter>
                     </Card>
                 </div>
