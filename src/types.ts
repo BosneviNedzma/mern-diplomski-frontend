@@ -27,6 +27,29 @@ export type Store = {
     lastUpdated: string;
 };
 
+export type OrderStatus = "postavljena" | "plaćena" | "uObradi" | "naDostavi" | "dostavljena";
+
+export type Order = {
+    _id: string;
+    store: Store;
+    user: User;
+    cartItems: {
+        menuItemId: string;
+        name: string;
+        quantity: string;
+    }[];
+    deliveryDetails: {
+        name: string;
+        addressLine1: string;
+        city: string;
+        email: string;
+    };
+    totalAmount: number;
+    status: OrderStatus;
+    createdAt: string;
+    storeId: string;
+}
+
 export type StoreSearchResponse = {
     data: Store[];
     pagination: {
