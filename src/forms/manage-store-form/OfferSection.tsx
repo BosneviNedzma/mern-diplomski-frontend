@@ -12,7 +12,7 @@ const OfferSection = () => {
             <div className="">
                 <h2 className="text-2xl font-bold">Ponuda</h2>
                 <FormDescription>
-                    Označite šta u trgovini nudite
+                    Označite šta nudite u trgovini
                 </FormDescription>
             </div>
             <FormField control={control} name="offers" render={({ field }) => (
