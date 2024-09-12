@@ -19,8 +19,17 @@ const HomePage = () => {
                 <h1 className="text-5xl font-bold tracking-tight text-green-600">
                     Organska dobrota na dlanu
                 </h1>
-                <span className="text-xl">Klik te dijeli od sreće</span>
-                <SearchBar placeHolder="Pretraži po gradu ili općini" onSubmit={handleSearchSubmit} searchQuery={""} />
+
+                <span className="block md:hidden text-xl">
+                    <span className="text-xl">Pretraži po gradu ili općini</span>
+                    <SearchBar placeHolder="" onSubmit={handleSearchSubmit} searchQuery={""} />
+                </span>
+
+                {/* Prikazujemo samo na većim ekranima */}
+                <span className="hidden md:block text-xl">
+                    <span className="text-xl">Klik te dijeli od sreće</span>
+                    <SearchBar placeHolder="Pretraži po gradu ili općini" onSubmit={handleSearchSubmit} searchQuery={""} />
+                </span>
             </div>
             <div className="grid md:grid-cols-2 gap-5">
                 <img src={landingImage} />
