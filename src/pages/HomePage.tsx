@@ -20,16 +20,17 @@ const HomePage = () => {
                     Organska dobrota na dlanu
                 </h1>
 
-                <span className="block md:hidden text-xl">
+                <div className="block md:hidden text-xl flex-col gap-4">
                     <span className="text-xl">Pretraži po gradu ili općini</span>
-                    <SearchBar placeHolder="" onSubmit={handleSearchSubmit} searchQuery={""} />
-                </span>
+                    <div style={{ height: '20px' }}></div>
+                    <SearchBar placeHolder="" onSubmit={handleSearchSubmit} searchQuery={""}  />
+                </div>
 
-                {/* Prikazujemo samo na većim ekranima */}
-                <span className="hidden md:block text-xl">
+                <div className="hidden md:block text-xl flex-col gap-4">
                     <span className="text-xl">Klik te dijeli od sreće</span>
+                    <div style={{ height: '20px' }}></div>
                     <SearchBar placeHolder="Pretraži po gradu ili općini" onSubmit={handleSearchSubmit} searchQuery={""} />
-                </span>
+                </div>
             </div>
             <div className="grid md:grid-cols-2 gap-5">
                 <img src={landingImage} />
