@@ -1,12 +1,13 @@
-import LoadingButton from "@/components/LoadingButton";
-import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { User } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
+import { useEffect } from "react";
+import { User } from "@/types";
 import { z } from "zod";
+
+import LoadingButton from "@/components/LoadingButton";
 
 const formSchema = z.object({
     email: z.string().optional(),
@@ -24,7 +25,7 @@ type Props = {
     isLoading: boolean;
     title?: string;
     buttonText?: string;
-}
+};
 
 const UserProfileForm = ({ onSave, isLoading, currentUser, title = "Korisnički profil", buttonText = "Spremi" }: Props) => {
     const form = useForm<UserFormData>({
@@ -106,6 +107,6 @@ const UserProfileForm = ({ onSave, isLoading, currentUser, title = "Korisnički 
             </form>
         </Form>
     )
-}
+};
 
 export default UserProfileForm;

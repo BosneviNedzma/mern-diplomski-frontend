@@ -1,7 +1,8 @@
-import landingImage from "../assets/landing.png"
-import appDownloadImage from "../assets/appDownload.png"
-import SearchBar, { SearchForm } from "@/components/SearchBar";
 import { useNavigate } from "react-router-dom";
+
+import SearchBar, { SearchForm } from "@/components/SearchBar";
+import appDownloadImage from "../assets/appDownload.png"
+import landingImage from "../assets/landing.png"
 
 const HomePage = () => {
     const navigate = useNavigate();
@@ -31,6 +32,6 @@ const HomePage = () => {
             </div>
         </div>
     )
-}
+};
 
 export default HomePage;

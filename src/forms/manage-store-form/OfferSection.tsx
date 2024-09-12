@@ -1,6 +1,7 @@
 import { FormDescription, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { offerList } from "@/config/store-options-config";
 import { useFormContext } from "react-hook-form";
+
 import OfferCheckbox from "./OfferCheckbox";
 
 const OfferSection = () => {
@@ -27,6 +28,6 @@ const OfferSection = () => {
             } />
         </div>
     )
-}
+};
 
 export default OfferSection;

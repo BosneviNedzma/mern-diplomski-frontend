@@ -1,15 +1,16 @@
+import { UserFormData } from "@/forms/user-profile-form/UserProfileForm";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { useCreateCheckoutSession } from "@/api/OrderApi";
+import { Card, CardFooter } from "@/components/ui/card";
+import { MenuItem as MenuItemType } from "@/types";
+import { useParams } from "react-router-dom";
 import { useGetStore } from "@/api/StoreApi";
+import { useState } from "react";
+
 import CheckoutButton from "@/components/CheckoutButton";
-import MenuItem from "@/components/MenuItem";
 import OrderSummary from "@/components/OrderSummary";
 import StoreInfo from "@/components/StoreInfo";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { Card, CardFooter } from "@/components/ui/card";
-import { UserFormData } from "@/forms/user-profile-form/UserProfileForm";
-import { MenuItem as MenuItemType } from "@/types";
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+import MenuItem from "@/components/MenuItem";
 
 export type CartItem = {
     _id: string;
@@ -27,6 +28,7 @@ const DetailPage = () => {
         const storedCartItems = sessionStorage.getItem(`cartItems-${storeId}`);
         return storedCartItems ? JSON.parse(storedCartItems) : [];
     });
+
     const addToCart = (menuItem: MenuItemType) => {
         setCartItems((prevCartItems) => {
             const existingCartItem = prevCartItems.find((cartItem) => cartItem._id === menuItem._id);
@@ -119,6 +121,6 @@ const DetailPage = () => {
             </div>
         </div>
     )
-}
+};
 
 export default DetailPage;

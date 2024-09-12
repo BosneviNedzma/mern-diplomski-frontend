@@ -1,16 +1,17 @@
-import { Form } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import DetailsSection from "./DetailsSection";
 import { Separator } from "@/components/ui/separator";
-import OfferSection from "./OfferSection";
-import MenuSection from "./MenuSection";
-import ImageSection from "./ImageSection";
-import LoadingButton from "@/components/LoadingButton";
 import { Button } from "@/components/ui/button";
+import { Form } from "@/components/ui/form";
+import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 import { Store } from "@/types";
+import { z } from "zod";
+
+import LoadingButton from "@/components/LoadingButton";
+import DetailsSection from "./DetailsSection";
+import OfferSection from "./OfferSection";
+import ImageSection from "./ImageSection";
+import MenuSection from "./MenuSection";
 
 const formSchema = z.object({
     storeName: z.string({
@@ -44,7 +45,7 @@ const formSchema = z.object({
 }).refine((data) => data.imageUrl || data.imageFile, {
     message: "Mora biti priložena ili slika ili dokument slike.",
     path: ["imageFile"],
-} )
+})
 
 type StoreFormData = z.infer<typeof formSchema>
 
@@ -52,7 +53,7 @@ type Props = {
     store?: Store;
     onSave: (storeFormData: FormData) => void;
     isLoading: boolean;
-}
+};
 
 const ManageStoreForm = ({ onSave, isLoading, store }: Props) => {
     const form = useForm<StoreFormData>({
@@ -99,10 +100,10 @@ const ManageStoreForm = ({ onSave, isLoading, store }: Props) => {
             formData.append(`menuItems[${index}][price]`, (menuItem.price * 100).toString())
         });
 
-        if(formDataJson.imageFile){
+        if (formDataJson.imageFile) {
             formData.append(`imageFile`, formDataJson.imageFile);
         }
-    
+
         console.log("Form Data:", formData);
         onSave(formData);
     }
@@ -121,6 +122,6 @@ const ManageStoreForm = ({ onSave, isLoading, store }: Props) => {
             </form>
         </Form>
     )
-}
+};
 
 export default ManageStoreForm;

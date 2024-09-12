@@ -1,17 +1,18 @@
-import { Button } from "@/components/ui/button";
 import { FormDescription, FormField, FormItem } from "@/components/ui/form";
 import { useFieldArray, useFormContext } from "react-hook-form";
+import { Button } from "@/components/ui/button";
+
 import MenuItemInput from "./MenuItemInput";
 
 const MenuSection = () => {
-    const {control} = useFormContext();
+    const { control } = useFormContext();
 
-    const {fields, append, remove} = useFieldArray({
+    const { fields, append, remove } = useFieldArray({
         control,
         name: "menuItems",
-    }); 
+    });
 
-    return(
+    return (
         <div className="space-y-2">
             <div className="">
                 <h2 className="text-2xl font-bold">Ponuda</h2>
@@ -26,9 +27,9 @@ const MenuSection = () => {
                     ))}
                 </FormItem>
             )} />
-            <Button type="button" onClick={() => append({name: "", price:""})}>Dodaj</Button>
+            <Button type="button" onClick={() => append({ name: "", price: "" })}>Dodaj</Button>
         </div>
     )
-}
+};
 
 export default MenuSection;

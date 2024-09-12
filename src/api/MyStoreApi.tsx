@@ -1,6 +1,6 @@
-import { Order, Store } from "@/types";
-import { useAuth0 } from "@auth0/auth0-react";
 import { useMutation, useQuery } from "react-query";
+import { useAuth0 } from "@auth0/auth0-react";
+import { Order, Store } from "@/types";
 import { toast } from "sonner";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
@@ -20,9 +20,11 @@ export const useGetMyStore = () => {
                 Authorization: `Bearer ${accessToken}`
             }
         });
+
         if (!response.ok) {
             throw new Error("Greška pri dohvaćanju prodavnice.");
         }
+
         return response.json();
     };
 
@@ -136,48 +138,48 @@ type UpdateOrderStatusRequest = {
 
 export const useUpdateMyStoreOrder = () => {
     const { getAccessTokenSilently } = useAuth0();
-  
+
     const updateMyStoreOrder = async (
-      updateStatusOrderRequest: UpdateOrderStatusRequest
+        updateStatusOrderRequest: UpdateOrderStatusRequest
     ) => {
-      const accessToken = await getAccessTokenSilently();
-  
-      const response = await fetch(
-        `${API_BASE_URL}/api/my/store/order/${updateStatusOrderRequest.orderId}/status`,
-        {
-          method: "PATCH",
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ status: updateStatusOrderRequest.status }),
+        const accessToken = await getAccessTokenSilently();
+
+        const response = await fetch(
+            `${API_BASE_URL}/api/my/store/order/${updateStatusOrderRequest.orderId}/status`,
+            {
+                method: "PATCH",
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ status: updateStatusOrderRequest.status }),
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error("Greška pri ažuriranju stanja.");
         }
-      );
-  
-      if (!response.ok) {
-        throw new Error("Failed to update status");
-      }
-  
-      return response.json();
+
+        return response.json();
     };
-  
+
     const {
-      mutateAsync: updateStoreStatus,
-      isLoading,
-      isError,
-      isSuccess,
-      reset,
+        mutateAsync: updateStoreStatus,
+        isLoading,
+        isError,
+        isSuccess,
+        reset,
     } = useMutation(updateMyStoreOrder);
-  
+
     if (isSuccess) {
-      toast.success("Order updated");
+        toast.success("Narudžba ažurirana.");
     }
-  
+
     if (isError) {
-      toast.error("Unable to update order");
-      reset();
+        toast.error("Nije moguće ažurirati narudžbu.");
+        reset();
     }
-  
+
     return { updateStoreStatus, isLoading };
-  };
+};
 

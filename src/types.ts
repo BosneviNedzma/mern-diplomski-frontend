@@ -5,13 +5,13 @@ export type User = {
     addressLine1: string;
     city: string;
     country: string;
-}
+};
 
 export type MenuItem = {
     _id: string;
     name: string;
     price: number;
-}
+};
 
 export type Store = {
     _id: string;
@@ -48,7 +48,7 @@ export type Order = {
     status: OrderStatus;
     createdAt: string;
     storeId: string;
-}
+};
 
 export type StoreSearchResponse = {
     data: Store[];

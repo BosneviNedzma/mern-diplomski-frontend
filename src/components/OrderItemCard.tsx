@@ -1,11 +1,11 @@
-import { Order, OrderStatus } from "@/types";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import { ORDER_STATUS } from "@/config/order-status-config";
+import { useUpdateMyStoreOrder } from "@/api/MyStoreApi";
+import { Order, OrderStatus } from "@/types";
 import { Separator } from "./ui/separator";
 import { Badge } from "./ui/badge";
 import { Label } from "./ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
-import { ORDER_STATUS } from "@/config/order-status-config";
-import { useUpdateMyStoreOrder } from "@/api/MyStoreApi";
 import { useState } from "react";
 
 type Props = {
@@ -90,6 +90,6 @@ const OrderItemCard = ({ order }: Props) => {
             </CardContent>
         </Card>
     )
-}
+};
 
 export default OrderItemCard;

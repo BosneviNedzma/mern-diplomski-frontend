@@ -1,12 +1,12 @@
-import { Order } from "@/types";
 import { Separator } from "./ui/separator";
+import { Order } from "@/types";
 
 type Props = {
     order: Order;
-    
+
 }
 
-const OrderStatusDetail = ({order}: Props) => {
+const OrderStatusDetail = ({ order }: Props) => {
     return (
         <div className="space-y-5">
             <div className="flex flex-col">
@@ -27,7 +27,7 @@ const OrderStatusDetail = ({order}: Props) => {
             <Separator />
             <div className="flex flex-col">
                 <span className="font-bold">Ukupno</span>
-                <span>KM {(order.totalAmount/100).toFixed(2)}</span>
+                <span>KM {(order.totalAmount / 100).toFixed(2)}</span>
             </div>
         </div>
     )

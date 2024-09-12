@@ -1,8 +1,9 @@
-import { CircleUserRound, Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from "./ui/sheet";
+import { CircleUserRound, Menu } from "lucide-react";
+import { useAuth0 } from "@auth0/auth0-react";
 import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
-import { useAuth0 } from "@auth0/auth0-react";
+
 import MobileNavLinks from "./MobileNavLinks";
 
 const MobileNav = () => {
@@ -24,7 +25,7 @@ const MobileNav = () => {
                 <Separator />
                 <SheetDescription className="flex flex-col gap-4">
                     {isAuthenticated ? (<MobileNavLinks />) : (
-                        
+
                         <Button onClick={() => loginWithRedirect()} className="flex-1 font-bold bg-green-500">Prijavi se</Button>)}
 
                 </SheetDescription>

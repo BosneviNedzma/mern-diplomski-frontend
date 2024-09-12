@@ -1,15 +1,15 @@
-import { offerList } from "@/config/store-options-config";
-import { Label } from "./ui/label";
 import { Check, ChevronDown, ChevronUp } from "lucide-react";
-import { ChangeEvent } from "react";
+import { offerList } from "@/config/store-options-config";
 import { Button } from "./ui/button";
+import { ChangeEvent } from "react";
+import { Label } from "./ui/label";
 
 type Props = {
     onChange: (offers: string[]) => void;
     selectedOffers: string[];
     isExpanded: boolean;
     onExpandedClick: () => void;
-}
+};
 
 const OfferFilter = ({ onChange, selectedOffers, isExpanded, onExpandedClick }: Props) => {
     const handleOffersChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -54,6 +54,6 @@ const OfferFilter = ({ onChange, selectedOffers, isExpanded, onExpandedClick }: 
             </div>
         </>
     )
-}
+};
 
 export default OfferFilter;

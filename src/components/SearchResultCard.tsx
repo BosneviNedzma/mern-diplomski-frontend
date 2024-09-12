@@ -1,7 +1,7 @@
-import { Store } from "@/types";
-import { Link } from "react-router-dom";
-import { AspectRatio } from "./ui/aspect-ratio";
 import { Banknote, Clock, Dot } from "lucide-react";
+import { AspectRatio } from "./ui/aspect-ratio";
+import { Link } from "react-router-dom";
+import { Store } from "@/types";
 
 type Props = {
   store: Store;

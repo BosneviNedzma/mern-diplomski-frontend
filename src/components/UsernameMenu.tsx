@@ -1,8 +1,8 @@
-import { CircleUserRound } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu";
+import { CircleUserRound } from "lucide-react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Link } from "react-router-dom";
 import { Separator } from "./ui/separator";
+import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 
 const UsernameMenu = () => {
@@ -33,6 +33,6 @@ const UsernameMenu = () => {
             </DropdownMenuContent>
         </DropdownMenu>
     )
-}
+};
 
 export default UsernameMenu;

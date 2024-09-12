@@ -1,7 +1,7 @@
 // src/components/ImageUpload.tsx
-import React, { useState, ChangeEvent } from 'react';
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { storage } from '../firebase.ts'; // Adjust the import path if needed
+import React, { useState, ChangeEvent } from 'react';
+import { storage } from '../firebase.ts';
 
 const ImageUpload: React.FC = () => {
   const [image, setImage] = useState<File | null>(null);
@@ -24,14 +24,14 @@ const ImageUpload: React.FC = () => {
         snapshot => {
           const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           setProgress(progress);
-          console.log(`Upload is ${progress}% done`);
+          console.log(`Dodavanje slike: ${progress}%`);
         },
         error => {
           console.error(error);
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(downloadURL => {
-            console.log("File available at", downloadURL);
+            console.log("Dokument dostupan na: ", downloadURL);
             setUrl(downloadURL);
           });
         }
@@ -42,10 +42,10 @@ const ImageUpload: React.FC = () => {
   return (
     <div>
       <input type="file" onChange={handleChange} />
-      <button onClick={handleUpload}>Upload</button>
+      <button onClick={handleUpload}>Dodavanje</button>
       <br />
-      {progress > 0 && <p>Upload progress: {progress}%</p>}
-      {url && <img src={url} alt="Uploaded" />}
+      {progress > 0 && <p>Dodavanje slike: {progress}%</p>}
+      {url && <img src={url} alt="Dodana" />}
     </div>
   );
 };

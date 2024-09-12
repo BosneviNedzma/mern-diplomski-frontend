@@ -1,10 +1,10 @@
-import { Store } from "@/types";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { Dot } from "lucide-react";
+import { Store } from "@/types";
 
 type Props = {
     store: Store,
-}
+};
 
 const StoreInfo = ({ store }: Props) => {
     return (
@@ -29,6 +29,6 @@ const StoreInfo = ({ store }: Props) => {
             </CardContent>
         </Card>
     )
-}
+};
 
 export default StoreInfo;

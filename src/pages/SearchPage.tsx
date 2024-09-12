@@ -1,19 +1,20 @@
 import { useSearchStores } from "@/api/StoreApi";
-import OfferFilter from "@/components/OfferFilter";
+import { useParams } from "react-router-dom";
+import { useState } from "react";
+
+import SortOptionDropdown from "@/components/SortOptionDropdown";
 import PaginationSelector from "@/components/PaginationSelector";
 import SearchBar, { SearchForm } from "@/components/SearchBar";
 import SearchResultCard from "@/components/SearchResultCard";
 import SearchResultInfo from "@/components/SearchResultInfo";
-import SortOptionDropdown from "@/components/SortOptionDropdown";
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+import OfferFilter from "@/components/OfferFilter";
 
 export type SearchState = {
     searchQuery: string;
     page: number;
     selectedOffers: string[];
     sortOption: string;
-}
+};
 
 const SearchPage = () => {
     const { city } = useParams();
@@ -71,6 +72,7 @@ const SearchPage = () => {
     if (isLoading) {
         return <span>Loading...</span>
     }
+
     if (!results?.data || !city) {
         return <span>Nema pronađenih rezultata.</span>;
     }

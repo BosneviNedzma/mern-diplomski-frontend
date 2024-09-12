@@ -1,7 +1,8 @@
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { useGetMyOrders } from "@/api/OrderApi";
+
 import OrderStatusDetail from "@/components/OrderStatusDetail";
 import OrderStatusHeader from "@/components/OrderStatusHeader";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const OrderStatusPage = () => {
     const { orders, isLoading } = useGetMyOrders();
@@ -29,6 +30,6 @@ const OrderStatusPage = () => {
             ))}
         </div>
     )
-}
+};
 
 export default OrderStatusPage;

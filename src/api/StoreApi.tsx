@@ -1,5 +1,5 @@
-import { SearchState } from "@/pages/SearchPage";
 import { Store, StoreSearchResponse } from "@/types";
+import { SearchState } from "@/pages/SearchPage";
 import { useQuery } from "react-query";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
@@ -22,7 +22,7 @@ export const useGetStore = (storeId?: string) => {
     return {
         store, isLoading
     }
-}
+};
 
 export const useSearchStores = (searchState: SearchState, city?: string) => {
     const createSearchRequest = async (): Promise<StoreSearchResponse> => {

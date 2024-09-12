@@ -1,9 +1,8 @@
 import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
 import { useFormContext } from "react-hook-form";
+import { Input } from "@/components/ui/input";
 
 const DetailsSection = () => {
-
     const { control } = useFormContext();
 
     return (
@@ -25,21 +24,21 @@ const DetailsSection = () => {
             <div className="flex gap-4">
                 <FormField control={control} name="city" render={({ field }) => (
                     <FormItem className="flex-1 ">
-                    <FormLabel> Grad</FormLabel>
-                    <FormControl>
-                        <Input {...field} className="bg-white" />
-                    </FormControl>
-                    <FormMessage />
-                </FormItem>)}
+                        <FormLabel> Grad</FormLabel>
+                        <FormControl>
+                            <Input {...field} className="bg-white" />
+                        </FormControl>
+                        <FormMessage />
+                    </FormItem>)}
                 />
                 <FormField control={control} name="country" render={({ field }) => (
                     <FormItem className="flex-1">
-                    <FormLabel> Država</FormLabel>
-                    <FormControl>
-                        <Input {...field} className="bg-white" />
-                    </FormControl>
-                    <FormMessage />
-                </FormItem>)}
+                        <FormLabel> Država</FormLabel>
+                        <FormControl>
+                            <Input {...field} className="bg-white" />
+                        </FormControl>
+                        <FormMessage />
+                    </FormItem>)}
                 />
             </div>
             <FormField control={control} name="deliveryPrice" render={({ field }) => (
@@ -53,15 +52,15 @@ const DetailsSection = () => {
             />
             <FormField control={control} name="estimatedDeliveryTime" render={({ field }) => (
                 <FormItem className="max-w-[25%]">
-                <FormLabel> Očekivano vrijeme dostave (u minutama)</FormLabel>
-                <FormControl>
-                    <Input {...field} className="bg-white" placeholder="30" />
-                </FormControl>
-                <FormMessage />
-            </FormItem>)}
+                    <FormLabel> Očekivano vrijeme dostave (u minutama)</FormLabel>
+                    <FormControl>
+                        <Input {...field} className="bg-white" placeholder="30" />
+                    </FormControl>
+                    <FormMessage />
+                </FormItem>)}
             />
         </div>
     )
-}
+};
 
 export default DetailsSection;

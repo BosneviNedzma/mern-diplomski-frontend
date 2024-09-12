@@ -18,4 +18,4 @@ export const offerList = [
     "Začini",
     "Napici",
     "Gotova jela"
-]
+];

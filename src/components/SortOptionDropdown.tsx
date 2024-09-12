@@ -1,10 +1,10 @@
-import { Button } from "./ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu";
+import { Button } from "./ui/button";
 
 type Props = {
     onChange: (value: string) => void;
     sortOption: string;
-}
+};
 
 const SORT_OPTIONS = [
     {
@@ -19,7 +19,7 @@ const SORT_OPTIONS = [
         label: "očekivano vrijeme dostave",
         value: "estimatedDeliveryTime"
     },
-]
+];
 
 const SortOptionDropdown = ({ onChange, sortOption }: Props) => {
     const selectedSortLabel = SORT_OPTIONS.find((option) => option.value === sortOption)?.label || SORT_OPTIONS[0].label;
@@ -40,6 +40,6 @@ const SortOptionDropdown = ({ onChange, sortOption }: Props) => {
             </DropdownMenuContent>
         </DropdownMenu>
     )
-}
+};
 
 export default SortOptionDropdown;

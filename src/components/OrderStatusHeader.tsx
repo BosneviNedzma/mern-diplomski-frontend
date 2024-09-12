@@ -1,13 +1,12 @@
-import { Order } from "@/types";
-import { Progress } from "./ui/progress";
 import { ORDER_STATUS } from "@/config/order-status-config";
+import { Progress } from "./ui/progress";
+import { Order } from "@/types";
 
 type Props = {
     order: Order;
 }
 
 const OrderStatusHeader = ({ order }: Props) => {
-
     const getExpectedDelivery = () => {
         const created = new Date(order.createdAt);
 
@@ -34,6 +33,6 @@ const OrderStatusHeader = ({ order }: Props) => {
             <Progress className="animate-pulse" value={getOrderStatusInfo().progressValue} />
         </>
     )
-}
+};
 
 export default OrderStatusHeader;

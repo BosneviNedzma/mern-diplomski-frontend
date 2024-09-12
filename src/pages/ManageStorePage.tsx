@@ -1,7 +1,8 @@
 import { useCreateMyStore, useGetMyStore, useGetMyStoreOrders, useUpdateMyStore } from "@/api/MyStoreApi";
-import OrderItemCard from "@/components/OrderItemCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
 import ManageStoreForm from "@/forms/manage-store-form/ManageStoreForm";
+import OrderItemCard from "@/components/OrderItemCard";
 
 const ManageStorePage = () => {
     const { createStore, isLoading: isCreateLoading } = useCreateMyStore();
@@ -30,6 +31,6 @@ const ManageStorePage = () => {
             </TabsContent>
         </Tabs>
     )
-}
+};
 
 export default ManageStorePage;

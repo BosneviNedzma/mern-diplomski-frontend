@@ -1,13 +1,14 @@
-import { Navigate, Route, Routes } from "react-router-dom"
-import Layout from "./layouts/layout";
-import HomePage from "./pages/HomePage";
+import { Navigate, Route, Routes } from "react-router-dom";
+
 import AuthCallbackPage from "./pages/AuthCallbackPage";
 import UserProfilePage from "./pages/UserProfilePage";
-import ProtectedRoute from "./auth/ProtectedRoute";
 import ManageStorePage from "./pages/ManageStorePage";
+import OrderStatusPage from "./pages/OrderStatusPage";
+import ProtectedRoute from "./auth/ProtectedRoute";
 import SearchPage from "./pages/SearchPage";
 import DetailPage from "./pages/DetailPage";
-import OrderStatusPage from "./pages/OrderStatusPage";
+import HomePage from "./pages/HomePage";
+import Layout from "./layouts/layout";
 
 const AppRoutes = () => {
     return (

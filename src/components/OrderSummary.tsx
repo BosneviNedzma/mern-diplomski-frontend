@@ -1,18 +1,17 @@
-import { CartItem } from "@/pages/DetailPage";
-import { Store } from "@/types";
 import { CardContent, CardHeader, CardTitle } from "./ui/card";
-import { Badge } from "./ui/badge";
+import { CartItem } from "@/pages/DetailPage";
 import { Separator } from "./ui/separator";
 import { Trash } from "lucide-react";
+import { Badge } from "./ui/badge";
+import { Store } from "@/types";
 
 type Props = {
     store: Store;
     cartItems: CartItem[];
     removeFromCart: (cartItem: CartItem) => void;
-}
+};
 
 const OrderSummary = ({ store, cartItems, removeFromCart }: Props) => {
-
     const getTotalCost = () => {
         const totalInKM = cartItems.reduce((total, cartItem) => total + cartItem.price * cartItem.quantity, 0);
 
@@ -53,6 +52,6 @@ const OrderSummary = ({ store, cartItems, removeFromCart }: Props) => {
             </CardContent>
         </>
     )
-}
+};
 
 export default OrderSummary;
